@@ -1,50 +1,46 @@
-ELK ¿î¿µ ¹× °ü¸®
-https://www.kaggle.com/mlg-ulb/creditcardfraud/version/2
+1. ìžë°” ì„¤ì¹˜
+2. í™˜ê²½ë³€ìˆ˜ ì„¤ì •
+  ì œì–´íŒ - ì‹œìŠ¤í…œ - ê³ ê¸‰ ì‹œìŠ¤í…œ ì„¤ì • - ê³ ê¸‰ - í™˜ê²½ë³€ìˆ˜
 
-
-1. ÀÚ¹Ù ¼³Ä¡
-2. È¯°æº¯¼ö ¼³Á¤
-  Á¦¾îÆÇ - ½Ã½ºÅÛ - °í±Þ ½Ã½ºÅÛ ¼³Á¤ - °í±Þ - È¯°æº¯¼ö
-
-- ½Ã½ºÅÛ º¯¼ö:  º¯¼ö - JAVA_HOME
-                    °ª  -  ÀÚ½ÅÀÇ ÀÚ¹Ù ¼³Ä¡ °æ·Î
+- ì‹œìŠ¤í…œ ë³€ìˆ˜:  ë³€ìˆ˜ - JAVA_HOME
+                    ê°’  -  ìžì‹ ì˜ ìžë°” ì„¤ì¹˜ ê²½ë¡œ
  
-                   º¯¼ö - path  º¯¼ö Á¦ÀÏ ¸¶Áö¸·¿¡
-                     °ª - ;%JAVA_HOME%\bin;
+                   ë³€ìˆ˜ - path  ë³€ìˆ˜ ì œì¼ ë§ˆì§€ë§‰ì—
+                     ê°’ - ;%JAVA_HOME%\bin;
 
-3. elasticsearch-6.6.1 ½ÇÇà
- - ½ÃÀÛ - ½ÇÇà - powershell ½ÇÇà(°ü¸®ÀÚ ½ÇÇà)
- - °æ·Î ÀÌµ¿
+3. elasticsearch-6.6.1 ì‹¤í–‰
+ - ì‹œìž‘ - ì‹¤í–‰ - powershell ì‹¤í–‰(ê´€ë¦¬ìž ì‹¤í–‰)
+ - ê²½ë¡œ ì´ë™
 PS C:\> cd .\elk\elasticsearch-6.6.1\bin\
 PS C:\elk\elasticsearch-6.6.1\bin>
 
-- ½ÇÇà
+- ì‹¤í–‰
  PS C:\elk\elasticsearch-6.6.1\bin> .\elasticsearch.bat\
 
--µ¿ÀÛÈ®ÀÎ  (http://127.0.0.1:9200)
+-ë™ìž‘í™•ì¸  (http://127.0.0.1:9200)
  
-4. logstash-6.6.1 ¿î¿µ 
-- ÇÑ±Û °ú °ø¹éÀÌ ÀÖ´Â Æú´õ¿¡¼­ ¿î¿µÇÏ¸é ¿À·ù!!
-- powershell ½ÇÇà
+4. logstash-6.6.1 ìš´ì˜ 
+- í•œê¸€ ê³¼ ê³µë°±ì´ ìžˆëŠ” í´ë”ì—ì„œ ìš´ì˜í•˜ë©´ ì˜¤ë¥˜!!
+- powershell ì‹¤í–‰
 PS C:\WINDOWS\system32> cd \
 PS C:\> cd .\elk\logstash-6.6.1\bin\
 PS C:\elk\logstash-6.6.1\bin>
 
-4-1) beats¿¡ ´ëÇÑ ¾÷µ¥ÀÌÆ®
+4-1) beatsì— ëŒ€í•œ ì—…ë°ì´íŠ¸
 PS C:\elk\logstash-6.6.1\bin>logstash-plugin.bat  update logstash-input-beats
 
-4-2) logstash È¯°æ ¼³Á¤ÆÄÀÏ¿¡¼­  beats ÀÔ·Â ¼³Á¤
+4-2) logstash í™˜ê²½ ì„¤ì •íŒŒì¼ì—ì„œ  beats ìž…ë ¥ ì„¤ì •
  - C:\elk\logstash-6.6.1\config\logstash-sample.conf
-  logstash-sample.confÀ» º¹»çÇØ¼­  logstash.conf º¯°æ
-- logstash.conf ÆÄÀÏÀ» bin º¹»ç
+  logstash-sample.confì„ ë³µì‚¬í•´ì„œ  logstash.conf ë³€ê²½
+- logstash.conf íŒŒì¼ì„ bin ë³µì‚¬
 
-4-3) ½ÇÇà
+4-3) ì‹¤í–‰
 -PS C:\elk\logstash-6.6.1\bin>
 -PS C:\elk\logstash-6.6.1\bin> .\logstash.bat -f .\logstash.conf
 
 
-5. Å°¹Ù³ª ¿î¿µ
-- powershell ½ÇÇà
+5. í‚¤ë°”ë‚˜ ìš´ì˜
+- powershell ì‹¤í–‰
 - PS C:\> cd .\elk\kibana-6.6.1\bin\
 - PS C:\elk\kibana-6.6.1\bin>
 - PS C:\elk\kibana-6.6.1\bin> .\kibana.bat
@@ -53,59 +49,59 @@ PS C:\elk\logstash-6.6.1\bin>logstash-plugin.bat  update logstash-input-beats
 
 
 6. winlogbeat-6.6.0
-- powershell ½ÇÇà
+- powershell ì‹¤í–‰
 - PS C:\> cd .\elk\winlogbeat-6.6.0\
 - PS C:\elk\winlogbeat-6.6.0> ls
-6-1) ¼­ºñ½º ½ÇÇà
+6-1) ì„œë¹„ìŠ¤ ì‹¤í–‰
 PS C:\elk\winlogbeat-6.6.0> .\install-service-winlogbeat.ps1
-- º¸¾È¿À·ù
-- ÆÄ¿ö¼¿ ±ÇÇÑ °ü¸®¿¡ ´ëÇÑ ¿À·ù
-=>ÇöÀç ÆÄ¿ö¼¿ ±ÇÇÑ  : ExecutionPolicy  
+- ë³´ì•ˆì˜¤ë¥˜
+- íŒŒì›Œì…€ ê¶Œí•œ ê´€ë¦¬ì— ëŒ€í•œ ì˜¤ë¥˜
+=>í˜„ìž¬ íŒŒì›Œì…€ ê¶Œí•œ  : ExecutionPolicy  
 
  =>Set-ExecutionPolicy Unrestricted  (y)
 
 PS C:\elk\winlogbeat-6.6.0> .\install-service-winlogbeat.ps1
-- ¼­ºñ½º ¼³Ä¡ È®ÀÎ
+- ì„œë¹„ìŠ¤ ì„¤ì¹˜ í™•ì¸
 
-6-2)Á¤º¸ Àü¼Û¿¡ ´ëÇÑ ¼³Á¤
-- winlogbeat.yml   ¼³Á¤ ÆÄÀÏ
-- Å°¹Ù³ª¿Í ¿¤¶ó½ºÆ½ Á¤º¸ ¼³Á¤
+6-2)ì •ë³´ ì „ì†¡ì— ëŒ€í•œ ì„¤ì •
+- winlogbeat.yml   ì„¤ì • íŒŒì¼
+- í‚¤ë°”ë‚˜ì™€ ì—˜ë¼ìŠ¤í‹± ì •ë³´ ì„¤ì •
   setup.kibana:
-     host ÁÖ¼® Á¦°Å =>host: "localhost:5601"
+     host ì£¼ì„ ì œê±° =>host: "localhost:5601"
   
- output.elasticsearch:   È®ÀÎ
+ output.elasticsearch:   í™•ì¸
 
- ÇÚµé¸µ ÇÒ ·Î±× ÆÄÀÏ
+ í•¸ë“¤ë§ í•  ë¡œê·¸ íŒŒì¼
 - Get-WinEvent -ListLog * | Format-List  -Property  LogName
 
- ÆÄ¿ù½©·Î Á¦ÀÛµÈ ¾Ç¼ºÄÚµå  ÀÌº¥Æ®
+ íŒŒì›”ì‰˜ë¡œ ì œìž‘ëœ ì•…ì„±ì½”ë“œ  ì´ë²¤íŠ¸
 Get-WinEvent -ListLog * | ?{ $_.LogName -match "(Powershell | WMI | Sysmon)" }
 
-6-3) winlogbeat.yml Å×½ºÆ®
+6-3) winlogbeat.yml í…ŒìŠ¤íŠ¸
 winlogbeat.exe test config -c winlogbeat.yml
 PS C:\elk\winlogbeat-6.6.0> .\winlogbeat.exe test config -c .\winlogbeat.yml
 
-6-4) ½ÇÇà
+6-4) ì‹¤í–‰
 PS C:\elk\winlogbeat-6.6.0> Start-Service winlogbeat
 PS C:\elk\winlogbeat-6.6.0> Stop-Service winlogbeat
 
-6-5) ´ë½Ãº¸µå ¼³Á¤
+6-5) ëŒ€ì‹œë³´ë“œ ì„¤ì •
  .\winlogbeat.exe setup -dashboards
 
 PS C:\elk\winlogbeat-6.6.0> .\install-service-winlogbeat.ps1
 PS C:\elk\winlogbeat-6.6.0> Start-Service winlogbeat
 
 
-7. ÅëÇÕ È¯°æ
+7. í†µí•© í™˜ê²½
 http://localhost:5601
 
 
 
 
-* kibana ¿À·ù
+* kibana ì˜¤ë¥˜
 - .kibana index.
-=> curl ½ÇÇàÇÁ·Î±×·¥
-=> ±¸±Û ¾Û½ºÅä¾î - Restful API ¾Û
+=> curl ì‹¤í–‰í”„ë¡œê·¸ëž¨
+=> êµ¬ê¸€ ì•±ìŠ¤í† ì–´ - Restful API ì•±
     DELETE   http://localhost:9200/.kibana_1
 
 

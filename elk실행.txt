@@ -1,0 +1,116 @@
+ELK 운영 및 관리
+https://www.kaggle.com/mlg-ulb/creditcardfraud/version/2
+
+
+1. 자바 설치
+2. 환경변수 설정
+  제어판 - 시스템 - 고급 시스템 설정 - 고급 - 환경변수
+
+- 시스템 변수:  변수 - JAVA_HOME
+                    값  -  자신의 자바 설치 경로
+ 
+                   변수 - path  변수 제일 마지막에
+                     값 - ;%JAVA_HOME%\bin;
+
+3. elasticsearch-6.6.1 실행
+ - 시작 - 실행 - powershell 실행(관리자 실행)
+ - 경로 이동
+PS C:\> cd .\elk\elasticsearch-6.6.1\bin\
+PS C:\elk\elasticsearch-6.6.1\bin>
+
+- 실행
+ PS C:\elk\elasticsearch-6.6.1\bin> .\elasticsearch.bat\
+
+-동작확인  (http://127.0.0.1:9200)
+ 
+4. logstash-6.6.1 운영 
+- 한글 과 공백이 있는 폴더에서 운영하면 오류!!
+- powershell 실행
+PS C:\WINDOWS\system32> cd \
+PS C:\> cd .\elk\logstash-6.6.1\bin\
+PS C:\elk\logstash-6.6.1\bin>
+
+4-1) beats에 대한 업데이트
+PS C:\elk\logstash-6.6.1\bin>logstash-plugin.bat  update logstash-input-beats
+
+4-2) logstash 환경 설정파일에서  beats 입력 설정
+ - C:\elk\logstash-6.6.1\config\logstash-sample.conf
+  logstash-sample.conf을 복사해서  logstash.conf 변경
+- logstash.conf 파일을 bin 복사
+
+4-3) 실행
+-PS C:\elk\logstash-6.6.1\bin>
+-PS C:\elk\logstash-6.6.1\bin> .\logstash.bat -f .\logstash.conf
+
+
+5. 키바나 운영
+- powershell 실행
+- PS C:\> cd .\elk\kibana-6.6.1\bin\
+- PS C:\elk\kibana-6.6.1\bin>
+- PS C:\elk\kibana-6.6.1\bin> .\kibana.bat
+
+
+
+
+6. winlogbeat-6.6.0
+- powershell 실행
+- PS C:\> cd .\elk\winlogbeat-6.6.0\
+- PS C:\elk\winlogbeat-6.6.0> ls
+6-1) 서비스 실행
+PS C:\elk\winlogbeat-6.6.0> .\install-service-winlogbeat.ps1
+- 보안오류
+- 파워셀 권한 관리에 대한 오류
+=>현재 파워셀 권한  : ExecutionPolicy  
+
+ =>Set-ExecutionPolicy Unrestricted  (y)
+
+PS C:\elk\winlogbeat-6.6.0> .\install-service-winlogbeat.ps1
+- 서비스 설치 확인
+
+6-2)정보 전송에 대한 설정
+- winlogbeat.yml   설정 파일
+- 키바나와 엘라스틱 정보 설정
+  setup.kibana:
+     host 주석 제거 =>host: "localhost:5601"
+  
+ output.elasticsearch:   확인
+
+ 핸들링 할 로그 파일
+- Get-WinEvent -ListLog * | Format-List  -Property  LogName
+
+ 파월쉘로 제작된 악성코드  이벤트
+Get-WinEvent -ListLog * | ?{ $_.LogName -match "(Powershell | WMI | Sysmon)" }
+
+6-3) winlogbeat.yml 테스트
+winlogbeat.exe test config -c winlogbeat.yml
+PS C:\elk\winlogbeat-6.6.0> .\winlogbeat.exe test config -c .\winlogbeat.yml
+
+6-4) 실행
+PS C:\elk\winlogbeat-6.6.0> Start-Service winlogbeat
+PS C:\elk\winlogbeat-6.6.0> Stop-Service winlogbeat
+
+6-5) 대시보드 설정
+ .\winlogbeat.exe setup -dashboards
+
+PS C:\elk\winlogbeat-6.6.0> .\install-service-winlogbeat.ps1
+PS C:\elk\winlogbeat-6.6.0> Start-Service winlogbeat
+
+
+7. 통합 환경
+http://localhost:5601
+
+
+
+
+* kibana 오류
+- .kibana index.
+=> curl 실행프로그램
+=> 구글 앱스토어 - Restful API 앱
+    DELETE   http://localhost:9200/.kibana_1
+
+
+
+
+
+
+
